@@ -1,18 +1,7 @@
 import random
 import unittest
 
-from lantern.git.homework import (
-    is_two_object_has_same_value,
-    is_two_objects_has_same_type,
-    is_two_objects_is_the_same_objects,
-    multiple_ints,
-    multiple_ints_with_conversion,
-    alphabet,
-    simple_sort,
-    is_word_in_text,
-    remove_from_list_all_negative_numbers,
-    some_loop_exercise
-)
+from lantern.git.homework import *
 
 
 class TestObjectsComparison(unittest.TestCase):
