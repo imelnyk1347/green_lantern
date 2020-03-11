@@ -5,6 +5,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
+import string
 
 
 class OurAwesomeException(Exception):
@@ -136,7 +137,11 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    pass
+    dict_numbers = list(range(1, 27))
+
+    dict_abc = list(string.ascii_lowercase)
+
+    return dict(zip(dict_numbers, dict_abc))
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -146,4 +151,11 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
-    pass
+
+    List = []
+    while data:
+        List.append(min(data))
+        data.append(min(data))
+
+    return data
+
