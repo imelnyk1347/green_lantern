@@ -52,7 +52,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     """
 
     if isinstance(first_value, int) and isinstance(second_value, int):
-        return first_value + second_value
+        return first_value * second_value
 
     raise TypeError("Not valid input data")
 
@@ -153,9 +153,11 @@ def simple_sort(data: List[int]) -> List[list]:
     """
 
     List = []
+    
     while data:
+        
         List.append(min(data))
-        data.append(min(data))
+        data.remove(min(data))
 
-    return data
+    return List
 
