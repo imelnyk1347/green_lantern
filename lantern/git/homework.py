@@ -52,7 +52,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     """
 
     if isinstance(first_value, int) and isinstance(second_value, int):
-        return first_value + second_value
+        return first_value * second_value
 
     raise TypeError("Not valid input data")
 
@@ -137,6 +137,10 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
+    
+
+    #return {index + 1: letter for index, letter in enumerate(string.ascii_lowercase)}
+
     dict_numbers = list(range(1, 27))
 
     dict_abc = list(string.ascii_lowercase)
@@ -153,9 +157,11 @@ def simple_sort(data: List[int]) -> List[list]:
     """
 
     List = []
-    while data:
-        List.append(min(data))
-        data.append(min(data))
 
-    return data
+    while data:
+
+        List.append(min(data))
+        data.remove(min(data))
+
+    return List
 
