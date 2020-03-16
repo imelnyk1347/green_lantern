@@ -79,6 +79,7 @@ class Cheetah:
     """
 
 
+
 class Wall:
     """
     * Implement class Wall which receives such parameters: width and height
