@@ -77,7 +77,7 @@ class Cheetah:
       if age grosser 15(not including) return 40
 
     """
-
+Cat
 
 
 class Wall:
