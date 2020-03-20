@@ -39,10 +39,13 @@ class Cat:
     """
 
     def __init__(self, age):
-        pass
+        self.age = age
+        self.average_speed = self._set_average_speed()
+        self.saturation_level = 50
+
 
     def eat(self, product):
-        pass
+        pass  #  self.product = product
 
     def _reduce_saturation_level(self, value):
         pass
@@ -63,7 +66,7 @@ class Cat:
         pass
 
 
-class Cheetah:
+class Cheetah(Cat):
     """
     * Inherit from class Cat
 
@@ -77,7 +80,7 @@ class Cheetah:
       if age grosser 15(not including) return 40
 
     """
-Cat
+
 
 
 class Wall:
@@ -116,8 +119,10 @@ class Roof:
 
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, width, height, roof_type):
+        self.width = width
+        self.height = height
+        self.roof_type = roof_type
 
     def roof_square(self):
         pass
@@ -131,11 +136,12 @@ class Window:
 
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
 
     def window_square(self):
-        pass
+        return self.width * self.height
 
 
 class Door:
