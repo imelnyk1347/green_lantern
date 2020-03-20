@@ -40,21 +40,34 @@ class Cat:
 
     def __init__(self, age):
         self.age = age
-        self.average_speed = self._set_average_speed()
+        self.average_speed = self._set_average_speed
         self.saturation_level = 50
 
-
     def eat(self, product):
-        pass  #  self.product = product
+        if product == "fodder":
+            return self._increase_saturation_level(value=10)
+        if product == "apple":
+            return self._increase_saturation_level(value=5)
+        if product == "milk":
+            return self._increase_saturation_level(value=2)
 
     def _reduce_saturation_level(self, value):
-        pass
+        self.saturation_level = self.saturation_level - value    #  заміна з results на self.saturation_level
+        if self.saturation_level < 0:
+            return 0
 
     def _increase_saturation_level(self, value):
-        pass
+        self.saturation_level = self.saturation_level + value    #  заміна з results на self.saturation_level
+        if self.saturation_level > 100:
+            return 100
 
     def _set_average_speed(self):
-        pass
+        if self.age <= 7:
+            return 12
+        elif self.age in range(8, 11):    #  elif self.age >= 8 and self.age == 10:
+            return 9
+        elif self.age > 10:
+            return 6
 
     def run(self, hours):
         pass
@@ -99,7 +112,8 @@ class Wall:
     """
 
     def __init__(self, width, height):
-        pass
+        self.width = width
+        self.height = height
 
     def wall_square(self):
         pass
