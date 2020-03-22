@@ -114,7 +114,6 @@ class Cat:
         return self.average_speed
 
 
-
 class Cheetah(Cat):
 
     """
@@ -130,6 +129,9 @@ class Cheetah(Cat):
       if age grosser 15(not including) return 40
 
     """
+
+    def eat(self, product):
+        pass
 
 
 class Wall:
