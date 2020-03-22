@@ -81,23 +81,23 @@ class Cat:
         elif self.age > 10:
             return 6
 
-    def run(self, hours):  # refactoring
+    def run(self, hours):
 
         cat_run = hours * self.average_speed
 
         if cat_run <= 25:
             self.saturation_level = self._reduce_saturation_level(2)
 
-        if 26 <= cat_run <= 50:
+        elif cat_run in range(26, 51):
             self.saturation_level = self._reduce_saturation_level(5)
 
-        if 51 <= cat_run <= 100:
+        elif cat_run in range(51, 101):
             self.saturation_level = self._reduce_saturation_level(15)
 
-        if 101 <= cat_run <= 200:
+        elif cat_run in range(101, 201):
             self.saturation_level = self._reduce_saturation_level(25)
 
-        if cat_run >= 201:
+        elif cat_run > 200:
             self.saturation_level = self._reduce_saturation_level(50)
 
         return f"Your cat ran {cat_run} kilometers"
@@ -111,7 +111,8 @@ class Cat:
             return self.saturation_level
 
     def get_average_speed(self):
-        pass
+        return self.average_speed
+
 
 
 class Cheetah(Cat):
