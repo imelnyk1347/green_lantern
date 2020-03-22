@@ -40,7 +40,7 @@ class Cat:
 
     def __init__(self, age):
         self.age = age
-        self.average_speed = self._set_average_speed
+        self.average_speed = self._set_average_speed()
         self.saturation_level = 50
 
     def eat(self, product):
@@ -81,22 +81,26 @@ class Cat:
         elif self.age > 10:
             return 6
 
-    def run(self, hours):
+    def run(self, hours):  # refactoring
 
-        if hours * self.average_speed <= 25:
+        cat_run = hours * self.average_speed
+
+        if cat_run <= 25:
             self.saturation_level = self._reduce_saturation_level(2)
 
-        if 26 <= hours * self._set_average_speed <= 50:
+        if 26 <= cat_run <= 50:
             self.saturation_level = self._reduce_saturation_level(5)
 
-        if 51 <= hours * self.average_speed <= 100:
+        if 51 <= cat_run <= 100:
             self.saturation_level = self._reduce_saturation_level(15)
 
-        if 101 <= hours * self.average_speed <= 200:
+        if 101 <= cat_run <= 200:
             self.saturation_level = self._reduce_saturation_level(25)
 
-        if hours * self.average_speed >= 201:
+        if cat_run >= 201:
             self.saturation_level = self._reduce_saturation_level(50)
+
+        return f"Your cat ran {cat_run} kilometers"
 
     def get_saturation_level(self):
 
