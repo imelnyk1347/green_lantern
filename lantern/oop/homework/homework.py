@@ -162,7 +162,7 @@ class Wall:
 
     * Implement method wall_square which return result of simple square formula of rectangle
 
-    * Implement method number_of_rolls_of_wallpaper which receives such parameters: roll_width_m, roll_length_m
+    * Implement method number_of_rolls_of_wallpaper which receives such parameters: roll_width_m, roll_lenght_m
       (_m in the parameters name means meters) return number of rolls of wallpaper
 
       Example:
@@ -250,20 +250,31 @@ class Door:
 
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.wood_price = 10
+        self.metal_price = 3
 
     def door_square(self):
-        pass
+        return self.width * self.height
 
-    def door_price(self):
-        pass
+    def door_price(self, material):
+
+        if material == "wood":
+            self.wood_price = self.door_square() * self.wood_price
+
+        elif material == "metal":
+            self.metal_price = self.door_square() * self.metal_price
+
+        else:
+            raise ValueError("Sorry we don't have such material")
 
     def update_wood_price(self):
-        pass
+        return self.door_price
 
     def update_metal_price(self):
-        pass
+        return self.metal_price
 
 
 class House:
@@ -316,8 +327,8 @@ class House:
 
     * Implement method get_number_of_rolls_of_wallpapers that returns sum of the number of rolls of wallpapers
       needed for all our walls
-      it receives roll_width_m, roll_length_m parameters
-      Check if roll_width_m or roll_length_m eq 0 raise ValueError "Sorry length must be not 0"
+      it receives roll_width_m, roll_lenght_m parameters
+      Check if roll_width_m or roll_lenght_m eq 0 raise ValueError "Sorry length must be not 0"
 
     * Implement method get_room_square that returns the square of our room
       (from walls_square divide windows and door square)
