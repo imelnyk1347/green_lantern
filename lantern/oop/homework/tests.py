@@ -132,7 +132,7 @@ class TestHouse:
         actual_res = self.house.get_door_price(material)
         assert actual_res == updated_result
 
-    def test_get_roof_square(self):
+    def test_get_number_of_rolls_of_wallpaper(self):
         actual_res = self.house.get_roof_square()
         expected_res = 60
         assert actual_res == expected_res

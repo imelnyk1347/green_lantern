@@ -1,3 +1,6 @@
+import math
+
+
 class Cat:
     """
     Write Class Cat which will receive age from user
@@ -173,10 +176,14 @@ class Wall:
         self.height = height
 
     def wall_square(self):
-        return self.width * self.height
+        result = self.width * self.height
+        result += self.width * self.height
+        return result
 
-    def number_of_rolls_of_wallpaper(self, roll_width_m, roll_length_m):
-        pass
+    def number_of_rolls_of_wallpaper(self, roll_width_m, roll_lenght_m):
+        count_of_lines_in_roll = math.floor(roll_lenght_m / self.height)
+        count_of_lines = self.width / roll_width_m
+        return count_of_lines / count_of_lines_in_roll
 
 
 class Roof:
