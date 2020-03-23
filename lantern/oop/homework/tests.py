@@ -56,6 +56,7 @@ def test_set_cheetah_average_speed(age, result):
     (7, 4, 45),
     (9, 10, 35),
     (10, 20, 25),
+    (10, 20, 25),
     (6, 100, "Your cat is dead :(")
 ])
 def test_cat_run(age, hours, result):

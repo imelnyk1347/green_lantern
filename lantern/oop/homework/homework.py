@@ -196,7 +196,17 @@ class Roof:
         self.roof_type = roof_type
 
     def roof_square(self):
-        pass
+
+        self.roof_type = self.width * self.height
+
+        if self.roof_type == "gable":
+            self.roof_type = self.height * self.width * 2
+
+        elif self.roof_type == "single-pitch":
+            self.roof_type = self.height * self.width
+
+        else:
+            raise ValueError("Sorry there is only two types of roofs")
 
 
 class Window:
