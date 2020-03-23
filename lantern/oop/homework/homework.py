@@ -130,8 +130,27 @@ class Cheetah(Cat):
 
     """
 
+    def __init__(self, product):
+        super().__init__(product)
+
     def eat(self, product):
-        pass
+
+        if product == "gazelle":
+            self.saturation_level = self._increase_saturation_level(30)
+
+        elif product == "rabbit":
+            self.saturation_level = self._increase_saturation_level(15)
+
+    def _set_average_speed(self):
+
+        if self.age <= 5:
+            return 90
+
+        elif self.age in range(5, 16):
+            return 75
+
+        elif self.age > 10:
+            return 40
 
 
 class Wall:
