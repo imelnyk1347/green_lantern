@@ -176,9 +176,7 @@ class Wall:
         self.height = height
 
     def wall_square(self):
-        result = self.width * self.height
-        result += self.width * self.height
-        return result
+        return self.width * self.height
 
     def number_of_rolls_of_wallpaper(self, roll_width_m, roll_lenght_m):
         count_of_lines_in_roll = math.floor(roll_lenght_m / self.height)
@@ -336,13 +334,30 @@ class House:
     """
 
     def __init__(self):
-        pass
+        self.__walls = []
+        self.__windows = []
+        self.__roof = None
+        self.__door = None
 
-    def create_wall(self):
-        pass
+    def create_wall(self, width, height):
 
-    def create_roof(self):
-        pass
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+
+        if len(self.__walls) > 4:
+            raise ValueError("Our house can not have more than 4 walls")
+
+        self.__walls.append(Wall(width, height))
+
+    def create_roof(self, width, height, roof_type):
+
+        if width == 0 or height == 0:
+            raise ValueError("Value must be not 0")
+
+        if self.__roof is not None:
+            raise ValueError("The house can not have two roofs")
+
+        self.__roof = Roof(width, height, roof_type)
 
     def create_window(self):
         pass
@@ -351,7 +366,7 @@ class House:
         pass
 
     def get_count_of_walls(self):
-        pass
+        pass  # return self.create_wall
 
     def get_count_of_windows(self):
         pass
