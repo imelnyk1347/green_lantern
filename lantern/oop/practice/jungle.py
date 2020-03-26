@@ -1,17 +1,8 @@
-from __future__ import annotations
+#  from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 from typing import List
-
-
-class Jungle:
-
-    def __init__(self, predators: List[Predator], herbivorous: List[Herbivorous]):
-        self.predators = predators
-        self.herbivorous = herbivorous
-
-
-JUNGLE = Jungle(predators=[], herbivorous=[])
 
 
 class Animal(ABC):
@@ -23,6 +14,11 @@ class Animal(ABC):
     @abstractmethod
     def eat(self):
         raise NotImplementedError
+
+
+class Herbivorous(Animal):
+    def eat(self):
+        pass
 
 
 class Predator(Animal):
@@ -46,9 +42,14 @@ class Predator(Animal):
         return self.__hunt()
 
 
-class Herbivorous(Animal):
-    def eat(self):
-        pass
+class Jungle:
+
+    def __init__(self, predators: List[Predator], herbivorous: List[Herbivorous]):
+        self.predators = predators
+        self.herbivorous = herbivorous
+
+
+JUNGLE = Jungle(predators=[], herbivorous=[])
 
 
 if __name__ == "__main__":
