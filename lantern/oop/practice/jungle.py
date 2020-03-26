@@ -1,12 +1,28 @@
+<<<<<<< HEAD
 #  from __future__ import annotations
 
 from abc import ABC, abstractmethod
+=======
+from __future__ import annotations
+>>>>>>> 841e84997f61c1ce1d8f7b9abff6d475b1fc4903
 
+from abc import ABC, abstractmethod
 from typing import List
 
 
-class Animal(ABC):
+<<<<<<< HEAD
+=======
+class Jungle:
+    def __init__(self, predators: List[Predator], herbivorous: List[Herbivorous]):
+        self.predators = predators
+        self.herbivorous = herbivorous
 
+
+JUNGLE = Jungle(predators=[], herbivorous=[])
+
+
+>>>>>>> 841e84997f61c1ce1d8f7b9abff6d475b1fc4903
+class Animal(ABC):
     def __init__(self, weight, speed):
         self.weight = weight
         self.speed = speed
@@ -53,26 +69,26 @@ JUNGLE = Jungle(predators=[], herbivorous=[])
 
 
 if __name__ == "__main__":
-    # test if predator can hunt herbicorous
+    # testing predator's possibility to hunt herbivorous
+
     simba = Predator(weight=100, speed=100, power=70)
     timon = Herbivorous(weight=10, speed=114)
+
     JUNGLE.predators.append(simba)
     JUNGLE.herbivorous.append(timon)
     try:
         print(simba.hunt())
     except AttributeError:
-        print('hunt is hidden')
-    else:
-        print('something wrong')
-    # end of test
+        print("Method hunt is hidden")
+    # end of testing
 
-    # test of eat method
+    #  testing eat method
     print(simba.eat())
 
-    # test animal fo abstract class
+    # test animal of abstract class
     try:
         animal = Animal(weight=5, speed=10)
     except TypeError:
-        print('it`s ok')
+        print("All is OK")
     else:
-        print('something goes wrong')
+        print("Something goes wrong. Animal should be abstract")
