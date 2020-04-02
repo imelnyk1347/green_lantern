@@ -30,17 +30,32 @@ class TestRobotCreation:
 class TestRobotTurns:
 
     def setup(self):
-        x, y = 10, 15
-        self.asteroid = lonely_robot.Asteroid(x + 1, y + 1)
+        self.x, self.y = 10, 15
+        self.asteroid = lonely_robot.Asteroid(self.x + 1, self.y + 1)
 
     @pytest.mark.parametrize("curent_durection,expected_direction",
         (
             ("N", "W"),
             ("W", "S"),
-            ("S", "E")
+            ("S", "E"),
+
         )
     )
     def test_turn_left(self, curent_durection, expected_direction):
-        robot = lonely_robot.Robot(x, y, asteroid, curent_durection)
+        robot = lonely_robot.Robot(self.x, self.y, self.asteroid, curent_durection)
         robot.turn_left()
         assert robot.direction == expected_direction
+
+    @pytest.mark.parametrize("curent_durection,expected_direction",
+        (
+            ("S", "W"),
+            ("W", "N"),
+            ("N", "E"),
+
+        )
+    )
+    def test_turn_right(self, curent_durection, expected_direction):
+        robot = lonely_robot.Robot(self.x, self.y, self.asteroid, curent_durection)
+        robot.turn_right()
+        assert robot.direction == expected_direction
+
