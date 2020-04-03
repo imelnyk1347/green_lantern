@@ -48,6 +48,7 @@ class TestRobotTurns:
 
     @pytest.mark.parametrize("curent_durection,expected_direction",
         (
+
             ("S", "W"),
             ("W", "N"),
             ("N", "E"),
