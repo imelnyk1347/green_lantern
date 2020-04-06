@@ -25,6 +25,9 @@ class Robot:
         turns = {"E": "S", "S": "W", "W": "N", "N": "E"}
         self.direction = turns[self.direction]
 
+    def step_forward(self):
+        pass
+
 
 class MissAsteroidError(Exception):
     pass
