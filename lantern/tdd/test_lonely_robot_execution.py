@@ -73,6 +73,6 @@ class TestRobotTurns:
     )
     def test_step_forward(self, curent_step_x, curent_step_y, direction):
         robot = lonely_robot.Robot(self.x, self.y, self.asteroid, direction)
-        robot.step_forward()
+        robot.step_forward_or_back()
         assert robot.x == curent_step_x
         assert robot.y == curent_step_y
