@@ -153,6 +153,7 @@ def simple_sort(data: List[int]) -> List[list]:
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
     List = []
+<<<<<<< HEAD
 
     while data:
 
@@ -161,4 +162,13 @@ def simple_sort(data: List[int]) -> List[list]:
 
     return List
 
+=======
+    
+    while data:
+        
+        List.append(min(data))
+        data.remove(min(data))
+
+    return List
+>>>>>>> 95caf70a43bcf35a81a34d54e2e358d2ae74278b
 
