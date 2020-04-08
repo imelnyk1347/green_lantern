@@ -40,6 +40,5 @@ class Robot:
             self.y += 1
 
 
-
 class MissAsteroidError(Exception):
     pass
