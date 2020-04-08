@@ -64,10 +64,10 @@ class TestRobotTurns:
 
     @pytest.mark.parametrize("direction,curent_step_x,curent_step_y",
         (
-                ("S", 8, 15),
-                ("W", 5, 9),
-                ("N", 13, 19),
-                ("E", 9, 13)
+                ("S", 9, 14),
+                ("W", 9, 14),
+                ("N", 11, 16),
+                ("E", 11, 16)
         )
 
     )

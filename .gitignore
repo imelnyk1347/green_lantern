@@ -3,5 +3,7 @@ __pycache__/
 *.pyc
 .idea/
 venv
+virualenv
 1111.py
+.pytest_cache
 

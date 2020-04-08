@@ -27,10 +27,17 @@ class Robot:
 
     def step_forward_or_back(self):
         if self.direction == "S":
+            self.y -= 1
             self.x -= 1
         if self.direction == "W":
+            self.y -= 1
+            self.x -= 1
+        if self.direction == "N":
             self.y += 1
-
+            self.x += 1
+        if self.direction == "E":
+            self.y += 1
+            self.x += 1
 
 
 class MissAsteroidError(Exception):
