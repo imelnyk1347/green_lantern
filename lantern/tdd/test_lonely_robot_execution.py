@@ -7,7 +7,7 @@ class TestRobotCreation:
     def test_parameters(self):
         x, y = 10, 15
         direction = "E"
-        asteroid = lonely_robot.Asteroid(x + 10, y + 10)
+        asteroid = lonely_robot.Asteroid(x + 1, y + 1)
         robot = lonely_robot.Robot(x, y, asteroid, direction)
         assert robot.x == 10
         assert robot.y == 15
@@ -62,12 +62,12 @@ class TestRobotTurns:
         robot.turn_right()
         assert robot.direction == expected_direction
 
-    @pytest.mark.parametrize("curent_step_x,curent_step_y,direction",
+    @pytest.mark.parametrize("direction,curent_step_x,curent_step_y",
         (
-                ("S", 5, 10),
-                ("W", 10, 15),
-                ("N", 15, 20),
-                ("E", 20, 25)
+                ("S", 8, 15),
+                ("W", 5, 9),
+                ("N", 13, 19),
+                ("E", 9, 13)
         )
 
     )

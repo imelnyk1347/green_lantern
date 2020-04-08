@@ -26,9 +26,10 @@ class Robot:
         self.direction = turns[self.direction]
 
     def step_forward_or_back(self):
-        if self.direction == "N":
-            self.x += 10
-
+        if self.direction == "S":
+            self.x -= 1
+        if self.direction == "W":
+            self.y += 1
 
 
 
