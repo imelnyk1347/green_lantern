@@ -2,6 +2,7 @@ import json
 import os
 import unittest
 
+
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
