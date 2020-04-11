@@ -1,4 +1,5 @@
 from typing import List
+import psycopg2
 
 
 def task_1_add_new_record_to_db(con) -> None:
@@ -32,7 +33,10 @@ def task_2_list_all_customers(cur) -> list:
     Returns: 91 records
 
     """
-    pass
+    cur.execute(
+        '''select * from customers'''
+    )
+    return cur.fetchall()
 
 
 def task_3_list_customers_in_germany(cur) -> list:
@@ -44,7 +48,13 @@ def task_3_list_customers_in_germany(cur) -> list:
 
     Returns: 11 records
     """
-    pass
+    cur.execute(
+        '''
+        select * from customers where country='Germany';
+        '''
+    )
+    return cur.fetchall()
+
 
 
 def task_4_update_customer(con):
