@@ -56,7 +56,6 @@ def task_3_list_customers_in_germany(cur) -> list:
     return cur.fetchall()
 
 
-
 def task_4_update_customer(con):
     """
     Update first customer's name (Set customername equal to  'Johnny Depp')
@@ -114,6 +113,7 @@ def task_7_list_supplier_countries_in_desc_order(cur) -> list:
         '''
     )
     return cur.fetchall()  # bad
+
 
 def task_8_count_customers_by_city(cur):
     """
