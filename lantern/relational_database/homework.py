@@ -89,7 +89,12 @@ def task_6_list_all_supplier_countries(cur) -> list:
     Returns: 29 records
 
     """
-    pass
+    cur.execute(
+        '''
+        SELECT country FROM suppliers;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_7_list_supplier_countries_in_desc_order(cur) -> list:
@@ -102,8 +107,13 @@ def task_7_list_supplier_countries_in_desc_order(cur) -> list:
     Returns: 29 records in descending order
 
     """
-    pass
-
+    cur.execute(
+        '''
+        SELECT country FROM suppliers
+        ORDER BY country DESC;
+        '''
+    )
+    return cur.fetchall()  # bad
 
 def task_8_count_customers_by_city(cur):
     """
