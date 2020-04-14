@@ -112,7 +112,7 @@ def task_7_list_supplier_countries_in_desc_order(cur) -> list:
         ORDER BY country DESC;
         '''
     )
-    return cur.fetchall()  # bad
+    return cur.fetchall()
 
 
 def task_8_count_customers_by_city(cur):
@@ -125,7 +125,16 @@ def task_8_count_customers_by_city(cur):
     Returns: 69 records in descending order
 
     """
-    pass
+    cur.execute(
+        '''
+        SELECT COUNT(city), city 
+        FROM customers
+        GROUP BY city
+        ORDER BY COUNT DESC;
+        
+        '''
+    )
+    return cur.fetchall()  # need fix task_8.json
 
 
 def task_9_count_customers_by_country_with_than_10_customers(cur):
