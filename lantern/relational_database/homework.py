@@ -134,7 +134,7 @@ def task_8_count_customers_by_city(cur):
         
         '''
     )
-    return cur.fetchall()  # need fix task_8.json
+    return cur.fetchall()
 
 
 def task_9_count_customers_by_country_with_than_10_customers(cur):
