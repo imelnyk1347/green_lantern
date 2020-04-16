@@ -258,7 +258,15 @@ def task_15_list_customers_with_any_order_or_not(cur):
 
     Returns: 213 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT c.customername, c.contactname, c.country, o.orderid
+        FROM customers as c
+        LEFT JOIN orders as o
+        ON c.customerid = o.customerid
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_16_match_all_customers_and_suppliers_by_country(cur):
