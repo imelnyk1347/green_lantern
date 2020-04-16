@@ -199,7 +199,14 @@ def task_12_list_suppliers_from_specified_countries(cur):
 
     Returns: 8 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT supplierid, suppliername, contactname, city, country
+        FROM suppliers
+        WHERE country in ('USA', 'UK', 'Japan');
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_13_list_products_from_sweden_suppliers(cur):
@@ -211,7 +218,12 @@ def task_13_list_products_from_sweden_suppliers(cur):
 
     Returns: 3 records
     """
-    pass
+    cur.execute(
+        '''
+        
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_14_list_products_with_supplier_information(cur):
