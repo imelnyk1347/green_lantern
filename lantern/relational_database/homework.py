@@ -222,7 +222,7 @@ def task_13_list_products_from_sweden_suppliers(cur):
         '''
         SELECT productname 
         FROM products
-        WHERE productname in ('Inlagd Sill', 'Gravad lax', 'Röd Kaviar');
+        WHERE supplierid in (SELECT supplierid FROM suppliers WHERE country='Sweden');
         '''
     )
     return cur.fetchall()
@@ -237,7 +237,16 @@ def task_14_list_products_with_supplier_information(cur):
 
     Returns: 77 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT p.productid, p.productname, p.unit, p.price,
+        s.country, s.city, s.suppliername
+        FROM products as p
+        INNER JOIN suppliers as s
+        ON p.supplierid = s.supplierid;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_15_list_customers_with_any_order_or_not(cur):
