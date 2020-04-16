@@ -131,7 +131,6 @@ def task_8_count_customers_by_city(cur):
         FROM customers
         GROUP BY city
         ORDER BY COUNT DESC;
-        
         '''
     )
     return cur.fetchall()
@@ -146,7 +145,15 @@ def task_9_count_customers_by_country_with_than_10_customers(cur):
 
     Returns: 3 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT COUNT(country), country
+        FROM customers
+        GROUP BY country
+        HAVING COUNT(country) > 10;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_10_list_first_10_customers(cur):
@@ -155,7 +162,13 @@ def task_10_list_first_10_customers(cur):
 
     Results: 10 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT * FROM customers
+        FETCH first 10 row only;    
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_11_list_customers_starting_from_11th(cur):
@@ -167,7 +180,14 @@ def task_11_list_customers_starting_from_11th(cur):
 
     Returns: 11 records
     """
-    pass
+    cur.execute(
+        '''
+        SELECT * FROM customers
+        OFFSET 11 rows
+        FETCH FIRST 80 row only;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_12_list_suppliers_from_specified_countries(cur):
