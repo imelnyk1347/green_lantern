@@ -220,7 +220,9 @@ def task_13_list_products_from_sweden_suppliers(cur):
     """
     cur.execute(
         '''
-        
+        SELECT productname 
+        FROM products
+        WHERE productname in ('Inlagd Sill', 'Gravad lax', 'Röd Kaviar');
         '''
     )
     return cur.fetchall()
