@@ -89,7 +89,15 @@ def task_5_delete_the_last_customer(con) -> None:
     Args:
         con: psycopg connection
     """
-    pass
+    cur = con.cursor()
+    cur.execute(
+        '''
+        DELETE FROM customers
+        WHERE customerid = 91
+        RETURNING customers;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_6_list_all_supplier_countries(cur) -> list:
