@@ -20,7 +20,15 @@ def task_1_add_new_record_to_db(con) -> None:
     Returns: 92 records
 
     """
-    pass
+    cur = con.cursor()
+    cur.execute(
+        '''
+        INSERT INTO customers(customerid, customername, contactname, address, city, postalcode, country)
+        VALUES(92, 'Thomas', 'David', 'Some Address', 'London', '774', 'Singapore')
+        RETURNING customers;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_2_list_all_customers(cur) -> list:
