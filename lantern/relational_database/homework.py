@@ -34,7 +34,10 @@ def task_2_list_all_customers(cur) -> list:
 
     """
     cur.execute(
-        '''select * from customers'''
+        '''
+        SELECT * 
+        FROM customers
+        '''
     )
     return cur.fetchall()
 
@@ -50,7 +53,9 @@ def task_3_list_customers_in_germany(cur) -> list:
     """
     cur.execute(
         '''
-        select * from customers where country='Germany';
+        SELECT * 
+        FROM customers 
+        WHERE country='Germany';
         '''
     )
     return cur.fetchall()
@@ -65,7 +70,16 @@ def task_4_update_customer(con):
     Returns: 91 records with updated customer
 
     """
-    pass
+    cur = con.cursor()
+    cur.execute(
+        '''
+        UPDATE customers
+        SET customername = 'Johnny Depp'
+        WHERE customerid = 1
+        RETURNING customers;
+        '''
+    )
+    return cur.fetchall()
 
 
 def task_5_delete_the_last_customer(con) -> None:
@@ -90,7 +104,8 @@ def task_6_list_all_supplier_countries(cur) -> list:
     """
     cur.execute(
         '''
-        SELECT country FROM suppliers;
+        SELECT country 
+        FROM suppliers;
         '''
     )
     return cur.fetchall()
