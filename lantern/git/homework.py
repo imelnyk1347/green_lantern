@@ -48,6 +48,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
+
     if isinstance(first_value, int) and isinstance(second_value, int):
         return first_value * second_value
 
@@ -79,9 +80,8 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     """
     try:
         return int(first_value) * int(second_value)
-
     except ValueError:
-        raise ValueError("Not valid input data")
+    	raise("Not valid input data")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -104,6 +104,7 @@ def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
+
     return[i for i in range(0, 13) if i not in [6, 7]]
 
 
@@ -127,6 +128,9 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
+
+    #return {index + 1: letter for index, letter in enumerate(string.ascii_lowercase)}
+
 
     dict_numbers = list(range(1, 27))
 

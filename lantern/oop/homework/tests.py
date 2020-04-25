@@ -1,4 +1,5 @@
 import pytest
+#  import pdb;pdb.set_trace()
 
 from homework import Cat, Cheetah, House
 
@@ -55,7 +56,8 @@ def test_set_cheetah_average_speed(age, result):
     (7, 4, 45),
     (9, 10, 35),
     (10, 20, 25),
-    (6, 100, "Your cat is died :(")
+    (10, 20, 25),
+    (6, 100, "Your cat is dead :(")
 ])
 def test_cat_run(age, hours, result):
     cat = Cat(age)
@@ -65,10 +67,10 @@ def test_cat_run(age, hours, result):
 
 @pytest.mark.parametrize("age, hours, result", [
     (1, 1, 35),
-    (7, 4, "Your cat is died :("),
+    (7, 4, "Your cat is dead :("),
     (16, 1, 45)
 ])
-def test_cat_run(age, hours, result):
+def test_cheetah_run(age, hours, result):
     cheetah = Cheetah(age)
     cheetah.run(hours)
     assert cheetah.get_saturation_level() == result
@@ -130,7 +132,7 @@ class TestHouse:
         actual_res = self.house.get_door_price(material)
         assert actual_res == updated_result
 
-    def test_get_roof_square(self):
+    def test_get_number_of_rolls_of_wallpaper(self):
         actual_res = self.house.get_roof_square()
         expected_res = 60
         assert actual_res == expected_res
