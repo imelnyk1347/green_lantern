@@ -10,9 +10,10 @@ class NoSuchUserError(Exception):
 
 app = Flask(__name__)
 
+
 @app.errorhandler(NoSuchUserError)
 def my_error_handler(e):
-	return jsonify({'error': e.message}), 404
+    return jsonify({'error': e.message}), 404
 
 
 @app.route('/users', methods=['POST'])
@@ -27,3 +28,10 @@ def get_user(user_id):
     db = inject.instance('DB')
     user = db.users.get_user_by_id(user_id)
     return jsonify(user)
+
+
+@app.route('/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    db = inject.instance('DB')
+    db.users.update_user_by_id(user_id, request.json)
+    return jsonify({'status': 'success'})

@@ -10,6 +10,7 @@ class FakeStorage:
     def users(self):
         return self._users
 
+
 class FakeUsers:
     def __init__(self):
         self._users = {}
@@ -24,4 +25,10 @@ class FakeUsers:
         try:
             return self._users[user_id]
         except KeyError:
+            raise NoSuchUserError(user_id)
+
+    def update_user_by_id(self, user_id, user):
+        if user_id in self._users:
+            self._users[user_id] = user
+        else:
             raise NoSuchUserError(user_id)
