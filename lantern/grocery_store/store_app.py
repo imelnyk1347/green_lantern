@@ -8,12 +8,20 @@ class NoSuchUserError(Exception):
         self.message = f'No such user_id {user_id}'
 
 
+class ToMuchData(Exception):
+    def __init__(self, goods):
+        self.message = f'{goods} no found'
+
+
 app = Flask(__name__)
 
 
 @app.errorhandler(NoSuchUserError)
 def my_error_handler(e):
     return jsonify({'error': e.message}), 404
+
+
+#  -------------------------------------- users----------------------------------
 
 
 @app.route('/users', methods=['POST'])
@@ -35,3 +43,13 @@ def update_user(user_id):
     db = inject.instance('DB')
     db.users.update_user_by_id(user_id, request.json)
     return jsonify({'status': 'success'})
+
+
+#  -------------------------------------- goods----------------------------------
+
+
+@app.route('/goods', methods=['POST'])
+def create_goods():
+    db = inject.instance('DB')
+    goods = db.goods.add_goods(request.json)
+    return jsonify({'numbers of items created': 2}), 201
