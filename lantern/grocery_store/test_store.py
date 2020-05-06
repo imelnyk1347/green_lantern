@@ -30,7 +30,7 @@ class TestUsers(Initializer):
 
         resp = self.client.post(
             '/users',
-            json={'name': 'Andrew Derkach'}
+            json={'name': 'Ihor Melnyk'}
         )
         assert resp.json == {'user_id': 2}
 
@@ -83,3 +83,22 @@ class TestGoods(Initializer):
         )
         assert resp.status_code == 201
         assert resp.json == {'numbers of items created': 2}
+
+    def test_successful_get_goods(self):
+        resp = self.client.post(
+            '/goods/',
+            json=[
+                {'name': 'Chocolate_bar', 'price': 10},
+                {'name': 'Vodka', 'price': 150},
+                {'name': 'Viskaryk', 'price': 500},
+                {'name': 'Shmyrdyak_try_topora', 'price': 15}
+            ]
+        )
+        resp = self.client.get('/goods/')
+        assert resp.status_code == 200
+        assert resp.json == [
+            {'name': 'Chocolate_bar', 'price': 10, 'id': 1},
+            {'name': 'Vodka', 'price': 150, 'id': 2},
+            {'name': 'Viskaryk', 'price': 500, 'id': 3},
+            {'name': 'Shmyrdyak_try_topora', 'price': 15, 'id': 4}
+        ]
