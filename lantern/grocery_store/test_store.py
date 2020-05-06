@@ -91,7 +91,7 @@ class TestGoods(Initializer):
                 {'name': 'Chocolate_bar', 'price': 10},
                 {'name': 'Vodka', 'price': 150},
                 {'name': 'Viskaryk', 'price': 500},
-                {'name': 'Shmyrdyak_try_topora', 'price': 15}
+                {'name': 'Shmurdyak_try_topora', 'price': 15}
             ]
         )
         resp = self.client.get('/goods/')
@@ -100,5 +100,5 @@ class TestGoods(Initializer):
             {'name': 'Chocolate_bar', 'price': 10, 'id': 1},
             {'name': 'Vodka', 'price': 150, 'id': 2},
             {'name': 'Viskaryk', 'price': 500, 'id': 3},
-            {'name': 'Shmyrdyak_try_topora', 'price': 15, 'id': 4}
+            {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4}
         ]
