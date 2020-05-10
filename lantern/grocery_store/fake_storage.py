@@ -48,6 +48,13 @@ class FakeGoods:
     def add_goods(self, goods):
         for good in goods:
             goods_id = next(self._id_counter)
-            good.update({'id': goods_id})
             self._goods[goods_id] = good
-            return len(goods)  # maybe error, need refactoring
+        return len(goods)
+
+    def get_full_info_of_goods(self):
+        full_info = []
+        for key, value in self._goods.items():
+            # import pdb; pdb.set_trace()
+            full_info.append({**value, 'id': key})
+
+        return full_info

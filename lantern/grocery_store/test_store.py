@@ -82,11 +82,11 @@ class TestGoods(Initializer):
             ]
         )
         assert resp.status_code == 201
-        assert resp.json == {'numbers of items created': 2}
+        assert resp.json == {'numbers of items created': 2}  # len(resp.json)
 
     def test_successful_get_goods(self):
         resp = self.client.post(
-            '/goods/',
+            '/goods',
             json=[
                 {'name': 'Chocolate_bar', 'price': 10},
                 {'name': 'Vodka', 'price': 150},
@@ -94,7 +94,7 @@ class TestGoods(Initializer):
                 {'name': 'Shmurdyak_try_topora', 'price': 15}
             ]
         )
-        resp = self.client.get('/goods/')
+        resp = self.client.get('/goods')
         assert resp.status_code == 200
         assert resp.json == [
             {'name': 'Chocolate_bar', 'price': 10, 'id': 1},

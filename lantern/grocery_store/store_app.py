@@ -47,7 +47,11 @@ def update_user(user_id):
 def create_goods():
     db = inject.instance('DB')
     goods = db.goods.add_goods(request.json)
-    return jsonify({'numbers of items created': 2}), 201
+    return jsonify({'numbers of items created': len(request.json)}), 201  # len(request.json)
 
 
-# @app.route('/goods/')
+@app.route('/goods')
+def get_goods():
+    db = inject.instance('DB')
+    goods = db.goods.get_full_info_of_goods()
+    return jsonify(goods), 200
