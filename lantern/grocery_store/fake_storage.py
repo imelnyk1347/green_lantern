@@ -58,3 +58,6 @@ class FakeGoods:
             full_info.append({**value, 'id': key})
 
         return full_info
+
+    def put_info_on_goods(self):
+        pass
