@@ -59,5 +59,5 @@ class FakeGoods:
 
         return full_info
 
-    def put_info_on_goods(self):
+    def put_info_on_goods(self, goods):
         pass

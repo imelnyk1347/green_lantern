@@ -59,4 +59,12 @@ def get_goods():
 
 @app.route('/goods', methods=['PUT'])
 def update_goods():
-    pass
+    # import pdb;pdb.set_trace()
+    db = inject.instance('DB')
+    update_good = db.goods.put_info_on_goods(request.json)
+    return jsonify(
+        {
+            'successfully_updated': update_good,
+            'errors': {'no such id in goods': []}
+        }
+    ), 200
