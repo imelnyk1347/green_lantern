@@ -118,7 +118,7 @@ class TestGoods(Initializer):
             '/goods',
             json=[
                 {'name': 'Chocolate_bar', 'price': 11, 'id': 1},
-                {'name': 'Vodka', 'price': 150, 'id': 2},
+                {'name': 'Vodka', 'price': 151, 'id': 2},
                 {'name': 'Viskaryk', 'price': 500, 'id': 3},
                 {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4}
             ]

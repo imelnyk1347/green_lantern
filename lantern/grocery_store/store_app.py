@@ -64,7 +64,7 @@ def update_goods():
     update_good = db.goods.put_info_on_goods(request.json)
     return jsonify(
         {
-            'successfully_updated': update_good,
-            'errors': {'no such id in goods': []}
+            'successfully_updated': len(request.json),
+            'errors': {'no such id in goods': len(update_good)}
         }
     ), 200

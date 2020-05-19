@@ -20,6 +20,7 @@ class FakeUsers:
     def __init__(self):
         self._users = {}
         self._id_counter = count(1)
+        self._goods = {}
 
     def add(self, user):
         user_id = next(self._id_counter)
@@ -39,11 +40,11 @@ class FakeUsers:
             raise NoSuchUserError(user_id)
 
 
-class FakeGoods:
+class FakeGoods(FakeUsers):
 
-    def __init__(self):
-        self._goods = {}
-        self._id_counter = count(1)
+    # def __init__(self):
+    #     self._goods = {}
+    #     self._id_counter = count(1)
 
     def add_goods(self, goods):
         for good in goods:
@@ -56,8 +57,18 @@ class FakeGoods:
         for key, value in self._goods.items():
             # import pdb; pdb.set_trace()
             full_info.append({**value, 'id': key})
-
         return full_info
 
     def put_info_on_goods(self, goods):
-        pass
+        import pdb;pdb.set_trace()
+        success_good = 0
+        error_goods_id = []
+        for iter_good in goods:
+            for key, value in enumerate(self._goods):
+                if iter_good['id'] == value['id']:
+                    error_goods_id.append(iter_good['id'])
+                    continue
+
+                self._goods = iter_good['id']
+                success_good += 1
+        return success_good, error_goods_id  # need refactoring
