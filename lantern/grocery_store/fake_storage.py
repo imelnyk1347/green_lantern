@@ -60,15 +60,15 @@ class FakeGoods(FakeUsers):
         return full_info
 
     def put_info_on_goods(self, goods):
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
         success_good = 0
         error_goods_id = []
-        for iter_good in goods:
-            for key, value in enumerate(self._goods):
-                if iter_good['id'] == value['id']:
-                    error_goods_id.append(iter_good['id'])
-                    continue
 
-                self._goods = iter_good['id']
+        for new_value in goods:
+            if new_value['id'] in self._goods.keys():
+                self._goods[new_value['id']] = new_value
                 success_good += 1
-        return success_good, error_goods_id  # need refactoring
+            else:
+                error_goods_id.append(new_value['id'])
+        # import pdb;pdb.set_trace()
+        return success_good, error_goods_id

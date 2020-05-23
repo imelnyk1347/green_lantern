@@ -61,10 +61,10 @@ def get_goods():
 def update_goods():
     # import pdb;pdb.set_trace()
     db = inject.instance('DB')
-    update_good = db.goods.put_info_on_goods(request.json)
+    succes_count, error_ids = db.goods.put_info_on_goods(request.json)
     return jsonify(
         {
-            'successfully_updated': len(request.json),
-            'errors': {'no such id in goods': len(update_good)}
+            'successfully_updated': succes_count,
+            'errors': {'no such id in goods': error_ids}
         }
     ), 200

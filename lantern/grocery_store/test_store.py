@@ -120,11 +120,12 @@ class TestGoods(Initializer):
                 {'name': 'Chocolate_bar', 'price': 11, 'id': 1},
                 {'name': 'Vodka', 'price': 151, 'id': 2},
                 {'name': 'Viskaryk', 'price': 500, 'id': 3},
-                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4}
+                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4},
+                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 5}
             ]
         )
         assert resp.status_code == 200
         assert resp.json == {
-            'successfully_updated': 2,
-            'errors': {'no such id in goods': [3, 4]}
+            'successfully_updated': 4,
+            'errors': {'no such id in goods': [5]}
         }
