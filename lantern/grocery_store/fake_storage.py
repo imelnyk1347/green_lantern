@@ -1,11 +1,12 @@
 from itertools import count
-from store_app import NoSuchUserError
+from store_app import NoSuchUserError, NoSuchUserID
 
 
 class FakeStorage:
     def __init__(self):
         self._users = FakeUsers()
         self._goods = FakeGoods()
+        self._stores = FakeStores()
 
     @property
     def users(self):
@@ -15,12 +16,17 @@ class FakeStorage:
     def goods(self):
         return self._goods
 
+    @property
+    def stores(self):
+        return self._stores
+
 
 class FakeUsers:
     def __init__(self):
         self._users = {}
         self._id_counter = count(1)
         self._goods = {}
+        self._stores = {}
 
     def add(self, user):
         user_id = next(self._id_counter)
@@ -42,10 +48,6 @@ class FakeUsers:
 
 class FakeGoods(FakeUsers):
 
-    # def __init__(self):
-    #     self._goods = {}
-    #     self._id_counter = count(1)
-
     def add_goods(self, goods):
         for good in goods:
             goods_id = next(self._id_counter)
@@ -60,7 +62,6 @@ class FakeGoods(FakeUsers):
         return full_info
 
     def put_info_on_goods(self, goods):
-        # import pdb;pdb.set_trace()
         success_good = 0
         error_goods_id = []
 
@@ -72,3 +73,14 @@ class FakeGoods(FakeUsers):
                 error_goods_id.append(new_value['id'])
         # import pdb;pdb.set_trace()
         return success_good, error_goods_id
+
+
+class FakeStores(FakeUsers):
+
+    def create_new_store(self, store):
+        try:
+            store_id = next(self._id_counter)
+            self._stores[store_id] = store
+            return store_id
+        except KeyError:
+            raise NoSuchUserID

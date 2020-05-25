@@ -2,10 +2,17 @@ from flask import Flask, jsonify, request
 
 import inject
 
+# -------------------------------------- errors -------------------
+
 
 class NoSuchUserError(Exception):
     def __init__(self, user_id):
         self.message = f'No such user_id {user_id}'
+
+
+class NoSuchUserID(Exception):
+    def __init__(self, store_id):
+        self.message = f'No such user id: {store_id}'
 
 
 app = Flask(__name__)
@@ -16,7 +23,12 @@ def my_error_handler(e):
     return jsonify({'error': e.message}), 404
 
 
-#  -------------------------------------- users-------------------
+@app.errorhandler(NoSuchUserID)
+def error_for_not_found_id(e):
+    return jsonify({'Error': e.message}), 404
+
+
+#  -------------------------------------- users -------------------
 
 
 @app.route('/users', methods=['POST'])
@@ -40,7 +52,7 @@ def update_user(user_id):
     return jsonify({'status': 'success'})
 
 
-#  -------------------------------------- goods------------------
+#  -------------------------------------- goods -------------------
 
 
 @app.route('/goods', methods=['POST'])
@@ -68,3 +80,13 @@ def update_goods():
             'errors': {'no such id in goods': error_ids}
         }
     ), 200
+
+
+#  -------------------------------------- stores -------------------
+
+
+@app.route('/stores', methods=['POST'])
+def create_store():
+    db = inject.instance('DB')
+    stores_ids = db.stores.create_new_store(request.json)
+    return jsonify({'stored_id': stores_ids}), 201

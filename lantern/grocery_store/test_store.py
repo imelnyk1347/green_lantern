@@ -121,7 +121,7 @@ class TestGoods(Initializer):
                 {'name': 'Vodka', 'price': 151, 'id': 2},
                 {'name': 'Viskaryk', 'price': 500, 'id': 3},
                 {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4},
-                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 5}
+                {'name': 'Olenka', 'price': 1500, 'id': 5}
             ]
         )
         assert resp.status_code == 200
@@ -129,3 +129,25 @@ class TestGoods(Initializer):
             'successfully_updated': 4,
             'errors': {'no such id in goods': [5]}
         }
+
+
+class TestStores(Initializer):
+
+    def test_create_store(self):
+
+        resp = self.client.post(
+            '/stores',
+            json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
+        )
+        assert resp.status_code == 201
+        assert resp.json == {'stored_id': 1}
+
+        resp = self.client.post(
+            '/stores',
+            json={'name': 'Svitlana Melnyk', 'location': 'Chernivtsi', 'manager_id': 2}
+        )
+        assert resp.status_code == 201
+        assert resp.json == {'stored_id': 2}
+
+    def test_error_created_store(self):
+        pass
