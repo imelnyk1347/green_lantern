@@ -90,3 +90,4 @@ def create_store():
     db = inject.instance('DB')
     stores_ids = db.stores.create_new_store(request.json)
     return jsonify({'stored_id': stores_ids}), 201
+
