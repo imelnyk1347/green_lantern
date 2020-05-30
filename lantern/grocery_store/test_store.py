@@ -110,7 +110,7 @@ class TestGoods(Initializer):
                 {'name': 'Chocolate_bar', 'price': 10, 'id': 1},
                 {'name': 'Vodka', 'price': 150, 'id': 2},
                 {'name': 'Viskaryk', 'price': 500, 'id': 3},
-                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4}
+                {'name': 'Try_topora', 'price': 15, 'id': 4}
             ]
         )
 
@@ -120,7 +120,7 @@ class TestGoods(Initializer):
                 {'name': 'Chocolate_bar', 'price': 11, 'id': 1},
                 {'name': 'Vodka', 'price': 151, 'id': 2},
                 {'name': 'Viskaryk', 'price': 500, 'id': 3},
-                {'name': 'Shmurdyak_try_topora', 'price': 15, 'id': 4},
+                {'name': 'Try_topora', 'price': 15, 'id': 4},
                 {'name': 'Olenka', 'price': 1500, 'id': 5}
             ]
         )
@@ -136,18 +136,31 @@ class TestStores(Initializer):
     def test_create_store(self):
 
         resp = self.client.post(
-            '/stores',
+            '/store',
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
         )
         assert resp.status_code == 201
         assert resp.json == {'stored_id': 1}
 
         resp = self.client.post(
-            '/stores',
+            '/store',
             json={'name': 'Svitlana Melnyk', 'location': 'Chernivtsi', 'manager_id': 2}
         )
-        assert resp.status_code == 201
         assert resp.json == {'stored_id': 2}
 
-    def test_error_created_store(self):
-        pass
+    def test_get_success_store(self):
+        # import pdb;pdb.set_trace()
+        resp = self.client.post(
+            '/store',
+            json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
+        )
+        store_id = resp.json['manager_id']
+        resp = self.client.get(f'/store/{store_id}')
+        assert resp.status_code == 200
+        assert resp.json == {'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
+
+    def test_get_unexistent_store(self):
+        resp = self.client.get('/store/1')
+        assert resp.status_code == 404
+        assert resp.json == {'Error': 'No such store id: 1'}  # {'error': 'No such user_id 1'}
+
