@@ -2,8 +2,12 @@ env/
 __pycache__/
 *.pyc
 .idea/
-venv
+venv/
 virualenv
 1111.py
 .pytest_cache
-
+*.egg-info/
+.DS_Store/
+.DS_Store
+./**/.data/
+lantern/django/django_intro/docker/envs/.**
