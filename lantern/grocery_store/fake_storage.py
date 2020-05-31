@@ -1,5 +1,5 @@
 from itertools import count
-from store_app import NoSuchUserError, NoSuchUserID, NoSuchStoreID
+from store_app import NoSuchUserError, NoSuchUserID, NoSuchStoreID, NoSuchManagerID
 
 
 class FakeStorage:
@@ -91,4 +91,12 @@ class FakeStores(FakeUsers):
             return full_stores
         except KeyError:
             raise NoSuchStoreID(store_id)
-    # import pdb;pdb.set_trace()
+
+    def update_store(self, store, store_id):
+
+        if store_id not in self._stores.keys():
+            raise NoSuchStoreID(store_id)
+
+        self._stores[store_id] = {**self._stores[store_id], **store}
+
+        return self._stores[store_id]

@@ -134,7 +134,6 @@ class TestGoods(Initializer):
 class TestStores(Initializer):
 
     def test_create_store(self):
-
         resp = self.client.post(
             '/store',
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
@@ -142,25 +141,37 @@ class TestStores(Initializer):
         assert resp.status_code == 201
         assert resp.json == {'stored_id': 1}
 
-        resp = self.client.post(
-            '/store',
-            json={'name': 'Svitlana Melnyk', 'location': 'Chernivtsi', 'manager_id': 2}
-        )
-        assert resp.json == {'stored_id': 2}
-
     def test_get_success_store(self):
         # import pdb;pdb.set_trace()
+
         resp = self.client.post(
             '/store',
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
         )
-        store_id = resp.json['manager_id']
+
+        store_id = resp.json['stored_id']
         resp = self.client.get(f'/store/{store_id}')
+
         assert resp.status_code == 200
         assert resp.json == {'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
 
     def test_get_unexistent_store(self):
         resp = self.client.get('/store/1')
         assert resp.status_code == 404
-        assert resp.json == {'Error': 'No such store id: 1'}  # {'error': 'No such user_id 1'}
+        assert resp.json == {'Error': 'No such store id: 1'}
 
+    def test_success_update_store(self):
+        resp = self.client.post(
+            '/store',
+            json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 11233}
+        )
+
+        store_id = resp.json['stored_id']
+        resp = self.client.put(
+            f'/store/{store_id}',
+            json={'name': 'Igor Melnyk', 'location': 'Lviv', 'manager_id': 105}
+        )
+        assert resp.status_code == 200
+        assert resp.json == {'name': 'Igor Melnyk',
+                             'location': 'Lviv',
+                             'manager_id': 105}

@@ -20,6 +20,11 @@ class NoSuchStoreID(Exception):
         self.message = f'No such store id: {store_id}'
 
 
+class NoSuchManagerID(Exception):
+    def __init__(self, manager_id):
+        self.message = f'No such store id: {manager_id}'
+
+
 app = Flask(__name__)
 
 
@@ -35,6 +40,11 @@ def error_for_not_found_id(e):
 
 @app.errorhandler(NoSuchStoreID)
 def error_for_not_found_store_id(e):
+    return jsonify({'Error': e.message}), 404
+
+
+@app.errorhandler(NoSuchManagerID)
+def error_for_not_found_manager_id(e):
     return jsonify({'Error': e.message}), 404
 
 
@@ -98,8 +108,9 @@ def update_goods():
 @app.route('/store', methods=['POST'])
 def create_store():
     db = inject.instance('DB')
-    stores_ids = db.stores.create_new_store(request.json)
-    return jsonify({'stored_id': stores_ids}), 201
+#    import pdb;pdb.set_trace()
+    store_id = db.stores.create_new_store(request.json)
+    return jsonify({'stored_id': store_id}), 201
 
 
 @app.route('/store/<int:store_id>')
@@ -108,4 +119,9 @@ def get_stores(store_id):
     full_stores_info = db.stores.get_full_info(store_id)
     return jsonify(full_stores_info), 200
 
-# import pdb;pdb.set_trace()
+
+@app.route('/store/<int:store_id>', methods=['PUT'])
+def update_store(store_id):
+    db = inject.instance('DB')
+    result = db.stores.update_store(request.json, store_id)
+    return jsonify(result), 200
