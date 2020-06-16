@@ -1,7 +1,7 @@
 from store_app import app
 from fake_storage import FakeStorage
 import inject
-from .views import users, goods  # .users
+from .views import users, goods, store  # .users
 
 
 def configure(binder):
@@ -13,5 +13,5 @@ inject.clear_and_configure(configure)
 
 
 if __name__ == '__main__':
-    app.register_blueprint(users, goods)
+    app.register_blueprint(users, goods, store)
     app.run(debug=True)
