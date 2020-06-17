@@ -1,6 +1,6 @@
 import inject
 
-from store_app import app
+from store_app import make_app
 from fake_storage import FakeStorage
 
 
@@ -12,7 +12,7 @@ def configure_test(binder):
 class Initializer:
     def setup(self):
         inject.clear_and_configure(configure_test)
-
+        app = make_app()
         app.config['TESTING'] = True
         with app.test_client() as client:
             self.client = client
@@ -47,7 +47,7 @@ class TestUsers(Initializer):
     def test_get_unexistent_user(self):
         resp = self.client.get('/users/1')
         assert resp.status_code == 404
-        assert resp.json == {'error': 'No such user_id 1'}
+        assert resp.json == {'ERROR': 'No such user_id 1'}
 
     def test_successful_update_user(self):
         resp = self.client.post(
@@ -68,7 +68,7 @@ class TestUsers(Initializer):
             json={'name': 'Johanna Doe'}
         )
         assert resp.status_code == 404
-        assert resp.json == {'error': 'No such user_id 1'}
+        assert resp.json == {'ERROR': 'No such user_id 1'}
 
 
 class TestGoods(Initializer):
@@ -139,7 +139,7 @@ class TestStores(Initializer):
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}
         )
         assert resp.status_code == 201
-        assert resp.json == {'stored_id': 1}
+        assert resp.json == {'stored_id': 1}  # len(resp)
 
     def test_get_success_store(self):
         resp = self.client.post(
@@ -156,7 +156,7 @@ class TestStores(Initializer):
     def test_get_unexistent_store(self):
         resp = self.client.get('/store/1')
         assert resp.status_code == 404
-        assert resp.json == {'Error': 'No such store id: 1'}
+        assert resp.json == {'ERROR': 'No such store id: 1'}
 
     def test_success_update_store(self):
         resp = self.client.post(

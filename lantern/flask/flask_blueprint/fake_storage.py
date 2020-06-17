@@ -1,5 +1,6 @@
 from itertools import count
-from store_app import NoSuchUserError, NoSuchUserID, NoSuchStoreID, NoSuchManagerID
+
+from errors import NoSuchUserError, NoSuchUserID, NoSuchStoreID
 
 
 class FakeStorage:

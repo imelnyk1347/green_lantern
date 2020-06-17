@@ -1,3 +1,3 @@
-from .users import users
-from .goods import goods
-from .store import store
+from .users import users_blp
+from .goods import goods_blp
+from .store import store_blp

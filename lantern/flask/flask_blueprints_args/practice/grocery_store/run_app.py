@@ -1,6 +1,6 @@
 import inject
 
-from store_app import make_app
+from .store_app import make_app
 
 if __name__ == '__main__':
     app = make_app()

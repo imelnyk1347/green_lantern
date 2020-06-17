@@ -1,6 +1,6 @@
 from itertools import count
 
-from errors import NoSuchUserError, NoSuchStoreError
+from .errors import NoSuchUserError, NoSuchStoreError
 
 
 class Repository:
