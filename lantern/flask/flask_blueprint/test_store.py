@@ -1,7 +1,7 @@
 import inject
 
 from fake_storage import FakeStorage
-from store_app import make_app
+from .store_app import make_app
 
 
 def configure_test(binder):
