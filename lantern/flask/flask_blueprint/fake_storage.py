@@ -93,12 +93,11 @@ class FakeStores(FakeUsers):
             raise NoSuchStoreID(store_id)
 
     def update_store(self, store, store_id):
-
+        # import pdb;pdb.set_trace()
         if store_id not in self._stores.keys():
             raise NoSuchStoreID(store_id)
 
         self._stores[store_id] = {**self._stores[store_id], **store}
 
         return self._stores[store_id]
-
 # import pdb;pdb.set_trace()

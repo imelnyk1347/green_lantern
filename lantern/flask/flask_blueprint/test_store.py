@@ -1,7 +1,7 @@
 import inject
 
-from store_app import make_app
 from fake_storage import FakeStorage
+from store_app import make_app
 
 
 def configure_test(binder):
@@ -47,7 +47,7 @@ class TestUsers(Initializer):
     def test_get_unexistent_user(self):
         resp = self.client.get('/users/1')
         assert resp.status_code == 404
-        assert resp.json == {'ERROR': 'No such user_id 1'}
+        assert resp.json == {'ERROR': 'No such user_id: 1'}
 
     def test_successful_update_user(self):
         resp = self.client.post(
@@ -68,7 +68,7 @@ class TestUsers(Initializer):
             json={'name': 'Johanna Doe'}
         )
         assert resp.status_code == 404
-        assert resp.json == {'ERROR': 'No such user_id 1'}
+        assert resp.json == {'ERROR': 'No such user_id: 1'}
 
 
 class TestGoods(Initializer):
@@ -161,7 +161,7 @@ class TestStores(Initializer):
     def test_success_update_store(self):
         resp = self.client.post(
             '/store',
-            json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 11233}
+            json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 104}
         )
 
         store_id = resp.json['stored_id']
@@ -173,5 +173,4 @@ class TestStores(Initializer):
         assert resp.json == {'name': 'Igor Melnyk',
                              'location': 'Lviv',
                              'manager_id': 105}
-
 # import pdb;pdb.set_trace()

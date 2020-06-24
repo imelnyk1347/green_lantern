@@ -3,7 +3,7 @@ from flask import jsonify
 
 class NoSuchUserError(Exception):
     def __init__(self, user_id):
-        self.message = f'No such user_id {user_id}'
+        self.message = f'No such user_id: {user_id}'
 
 
 class NoSuchUserID(Exception):
