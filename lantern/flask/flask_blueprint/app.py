@@ -53,3 +53,6 @@ with app.app_context():
         db.session.add(Goods(**good))
     db.session.commit()
     print("Data (good/goods) writen to database successfully. ")
+
+
+
