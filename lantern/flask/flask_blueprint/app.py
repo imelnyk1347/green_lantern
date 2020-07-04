@@ -45,10 +45,15 @@ db.init_app(app)
 with app.app_context():
     if database_exists(db.engine.url):
         db.create_all()
-        print("Database exists. ")
+        print("Database is exists. ")
+
+    # elif drop_database(db.engine.url):
+    #     print("Database is droped. ")
+
     else:
         create_database(db.engine.url)
-        print("Database created. ")
+        print("Database is created. ")
+
 
 with app.app_context():
     users = get_users()
