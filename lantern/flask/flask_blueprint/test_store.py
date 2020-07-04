@@ -163,7 +163,6 @@ class TestStores(Initializer):
             '/store',
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 104}
         )
-
         store_id = resp.json['stored_id']
         resp = self.client.put(
             f'/store/{store_id}',

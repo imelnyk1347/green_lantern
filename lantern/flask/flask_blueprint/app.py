@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import create_database, drop_database, database_exists
 
 from config import Config
-from populate_data import get_users, get_goods
+from populate_data import get_users, get_goods, get_stores
 
 
 db = SQLAlchemy()
@@ -25,6 +25,16 @@ class Goods(db.Model):
     brand = db.Column(db.String(), nullable=False)
     name = db.Column(db.String(), nullable=False)
     price = db.Column(db.Integer, nullable=False)  # db.String() if error
+
+
+class Stores(db.Model):
+    __tablename__ = "stores"
+
+    store_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(), nullable=False)
+    city = db.Column(db.String(), nullable=False)
+    address = db.Column(db.String(), nullable=False)
+    manager_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
 
 
 app = Flask(__name__)
@@ -54,5 +64,9 @@ with app.app_context():
     db.session.commit()
     print("Data (good/goods) writen to database successfully. ")
 
-
-
+with app.app_context():
+    stores = get_stores()
+    for store in stores:
+        db.session.add(Stores(**store))
+    db.session.commit()
+    print("Data (store/stores) writen to database successfully. ")
