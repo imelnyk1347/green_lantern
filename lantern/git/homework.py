@@ -36,7 +36,6 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     return id(first) == id(second)
 
 
-
 def multiple_ints(first_value: int, second_value: int) -> int:
     """
     Should calculate product of all args.
@@ -54,7 +53,6 @@ def multiple_ints(first_value: int, second_value: int) -> int:
         return first_value * second_value
 
     raise TypeError("Not valid input data")
-
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -83,7 +81,7 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     try:
         return int(first_value) * int(second_value)
     except ValueError:
-        raise("Not valid input data")
+    	raise("Not valid input data")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -119,8 +117,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-
-    return[positive_numbers for positive_numbers in data if positive_numbers >= 0]
+    return [i for i in data if i > 0]
 
 
 def alphabet() -> dict:
@@ -133,6 +130,7 @@ def alphabet() -> dict:
     """
 
     #return {index + 1: letter for index, letter in enumerate(string.ascii_lowercase)}
+
 
     dict_numbers = list(range(1, 27))
 
