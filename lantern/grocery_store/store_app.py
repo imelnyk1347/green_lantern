@@ -91,7 +91,6 @@ def get_goods():
 
 @app.route('/goods', methods=['PUT'])
 def update_goods():
-    # import pdb;pdb.set_trace()
     db = inject.instance('DB')
     succes_count, error_ids = db.goods.put_info_on_goods(request.json)
     return jsonify(
@@ -108,7 +107,6 @@ def update_goods():
 @app.route('/store', methods=['POST'])
 def create_store():
     db = inject.instance('DB')
-#    import pdb;pdb.set_trace()
     store_id = db.stores.create_new_store(request.json)
     return jsonify({'stored_id': store_id}), 201
 

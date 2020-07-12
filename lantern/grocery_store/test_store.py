@@ -142,8 +142,6 @@ class TestStores(Initializer):
         assert resp.json == {'stored_id': 1}
 
     def test_get_success_store(self):
-        # import pdb;pdb.set_trace()
-
         resp = self.client.post(
             '/store',
             json={'name': 'Ihor Melnyk', 'location': 'Kyiv', 'manager_id': 1}

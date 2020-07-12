@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+#  from __future__ import annotations
+
+from abc import ABC, abstractmethod
+=======
 from __future__ import annotations
+>>>>>>> 841e84997f61c1ce1d8f7b9abff6d475b1fc4903
 
 from abc import ABC, abstractmethod
 from typing import List
 
 
+<<<<<<< HEAD
+=======
 class Jungle:
     def __init__(self, predators: List[Predator], herbivorous: List[Herbivorous]):
         self.predators = predators
@@ -13,6 +21,7 @@ class Jungle:
 JUNGLE = Jungle(predators=[], herbivorous=[])
 
 
+>>>>>>> 841e84997f61c1ce1d8f7b9abff6d475b1fc4903
 class Animal(ABC):
     def __init__(self, weight, speed):
         self.weight = weight
@@ -21,6 +30,11 @@ class Animal(ABC):
     @abstractmethod
     def eat(self):
         raise NotImplementedError
+
+
+class Herbivorous(Animal):
+    def eat(self):
+        pass
 
 
 class Predator(Animal):
@@ -44,9 +58,14 @@ class Predator(Animal):
         return self.__hunt()
 
 
-class Herbivorous(Animal):
-    def eat(self):
-        pass
+class Jungle:
+
+    def __init__(self, predators: List[Predator], herbivorous: List[Herbivorous]):
+        self.predators = predators
+        self.herbivorous = herbivorous
+
+
+JUNGLE = Jungle(predators=[], herbivorous=[])
 
 
 if __name__ == "__main__":
