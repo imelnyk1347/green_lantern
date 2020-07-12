@@ -173,5 +173,3 @@ class TestStores(Initializer):
         assert resp.json == {'name': 'Igor Melnyk',
                              'location': 'Lviv',
                              'manager_id': 105}
-
-# import pdb;pdb.set_trace()

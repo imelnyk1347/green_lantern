@@ -1,8 +1,8 @@
-env/
-__pycache__/
-*.pyc
-.idea/
+virtualenv/
 venv/
+.pytest_cache/
+env/
+=======
 virualenv
 1111.py
 .pytest_cache
@@ -11,3 +11,6 @@ virualenv
 .DS_Store
 ./**/.data/
 lantern/django/django_intro/docker/envs/.**
+__pycache__/
+*.pyc
+.idea/

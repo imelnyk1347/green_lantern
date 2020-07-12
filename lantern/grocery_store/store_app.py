@@ -123,5 +123,3 @@ def update_store(store_id):
     db = inject.instance('DB')
     result = db.stores.update_store(request.json, store_id)
     return jsonify(result), 200
-
-# import pdb;pdb.set_trace()

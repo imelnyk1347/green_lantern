@@ -71,6 +71,7 @@ class FakeGoods(FakeUsers):
                 success_good += 1
             else:
                 error_goods_id.append(new_value['id'])
+
         return success_good, error_goods_id
 
 
@@ -83,6 +84,7 @@ class FakeStores(FakeUsers):
             return store_id
         except KeyError:
             raise NoSuchUserID(store_id)
+
 
     def get_full_info(self, store_id):
         try:
@@ -99,5 +101,5 @@ class FakeStores(FakeUsers):
         self._stores[store_id] = {**self._stores[store_id], **store}
 
         return self._stores[store_id]
-
 # import pdb;pdb.set_trace()
+
