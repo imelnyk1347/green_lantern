@@ -29,7 +29,7 @@ class Logout(Resource):
     def get(self):
         """
         Change logged_in session value to False, which means that our decorator
-        won't give access to see the page content from views where is it set.
+        won't give access to see the page content from routes where is it set.
         :return: str
         """
         session["logged_in"] = False

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# Create your views here.
+# Create your routes here.
 from django.views import View
 
 from apps.articles.forms import SearchForm

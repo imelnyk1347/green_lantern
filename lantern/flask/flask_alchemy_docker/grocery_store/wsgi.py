@@ -1,5 +1,5 @@
-from store_app import make_app
+from grocery_store import app
 
-if __name__ == '__main__':
-    app = make_app()
+
+if __name__ == "__main__":
     app.run(debug=True)

@@ -2,21 +2,21 @@ import csv
 import logging
 import os
 
+
 from grocery_store import app, db
 from grocery_store.models import User, Good, Store
 from grocery_store.config import FIXTURES_DIR, Config
-from sqlalchemy_utils import create_database, drop_database, database_exists
+from sqlalchemy_utils import create_database, database_exists, drop_database
 
 
 USERS_DIR = os.path.join(FIXTURES_DIR, "users.csv")
 GOODS_DIR = os.path.join(FIXTURES_DIR, "goods.csv")
 STORES_DIR = os.path.join(FIXTURES_DIR, "stores.csv")
 logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)-6s %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        # filename="logfile.log",  # if you want!!!
-    )
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)-6s %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 
 def get_users():
@@ -27,29 +27,30 @@ def get_users():
 
 
 def get_goods():
-    with open(GOODS_DIR, "r") as f:
-        reader = csv.DictReader(f)
+    with open(GOODS_DIR, "r") as g:
+        reader = csv.DictReader(g)
         goods = [good for good in reader]
     return goods
 
 
 def get_stores():
-    with open(STORES_DIR, "r") as f:
-        reader = csv.DictReader(f)
+    with open(STORES_DIR, "r") as s:
+        reader = csv.DictReader(s)
         stores = [store for store in reader]
     return stores
 
 
 with app.app_context():
     if not database_exists(db.engine.url):
-        logging.info(f'Database "{Config.DB_NAME}" does not exists')
+        logging.info(f"Database '{Config.DB_NAME}' does not exists.")
         create_database(db.engine.url)
-        logging.info(f'Creating database "{Config.DB_NAME}"...')
-        logging.info("Database successfully created")
+        logging.info(f"Creating database '{Config.DB_NAME}'. . .")
+        logging.info("Database successfully created.")
     db.create_all()
-    logging.info(f'Database "{Config.DB_NAME}" exists')
-    logging.info("Connection to database...")
-    logging.info("Connection succeeded!")
+    logging.info(f"Database '{Config.DB_NAME}' exists.")
+    logging.info("Connection to database . . .")
+    logging.info("Connection successfull !")
+
 
 with app.app_context():
     users = get_users()

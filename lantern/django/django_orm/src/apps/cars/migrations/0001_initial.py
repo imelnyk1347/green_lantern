@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('views', models.PositiveIntegerField(default=0, editable=False)),
+                ('routes', models.PositiveIntegerField(default=0, editable=False)),
                 ('slug', models.SlugField(max_length=75)),
                 ('number', models.CharField(max_length=16, unique=True)),
                 ('status', models.CharField(blank=True, choices=[('pending', 'Pending'), ('published', 'Published'), ('sold', 'Sold'), ('archived', 'Archived')], default='pending', max_length=15)),
