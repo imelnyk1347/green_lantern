@@ -8,7 +8,6 @@ from grocery_store.models import User, Good, Store
 from grocery_store.config import FIXTURES_DIR, Config
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
-
 USERS_DIR = os.path.join(FIXTURES_DIR, "users.csv")
 GOODS_DIR = os.path.join(FIXTURES_DIR, "goods.csv")
 STORES_DIR = os.path.join(FIXTURES_DIR, "stores.csv")
@@ -49,7 +48,14 @@ with app.app_context():
     db.create_all()
     logging.info(f"Database '{Config.DB_NAME}' exists.")
     logging.info("Connection to database . . .")
-    logging.info("Connection successfull !")
+    logging.info("Connection successfully !")
+
+
+# with app.app_context():
+#     if database_exists(db.engine.url):
+#         logging.info(f"Database '{Config.DB_NAME}' exist and ready to drop !")
+#         drop_database(db.engine.url)
+#         logging.info("Database successfully deleted !")
 
 
 with app.app_context():

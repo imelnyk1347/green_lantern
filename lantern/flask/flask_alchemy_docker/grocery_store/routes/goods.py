@@ -1,31 +1,37 @@
-from flask import Blueprint, request, jsonify
-import inject
+from flask import request
+from flask_restful import Resource, marshal
+
+from grocery_store.models import Good
+from grocery_store.db import db
+from grocery_store.routes.marshal_structure import goods_structure
 
 
-goods_blp = Blueprint("goods", __name__)
+class Goods(Resource):
 
+    def get(self, good_id=None):
+        if good_id:
+            good = Good.query.get(good_id)
+            if good:
+                return marshal(good, goods_structure)
+            return f"No such good with id: {good_id}"
+        return marshal(Good.query.all(), goods_structure)
 
-@goods_blp.route('/goods', methods=['POST'])
-def create_goods():
-    db = inject.instance('DB')
-    goods = db.goods.add_goods(request.json)
-    return jsonify({'numbers of items created': len(request.json)}), 201
+    def post(self):
+        good = Good(**request.json)
+        db.seddion.add(good)
+        db.session.commit()
+        return f"Successfully added a new good: {good}"
 
+    def put(self, good_id):
+        good = Good.query.get(good_id)
+        good.name = request.json.get("name", good.name)
+        good.brand = request.json.get("brand", good.brand)
+        good.price = request.json.get("price", good.price)
+        db.session.commit()
+        return f"Successfully updated good with id: {good_id}"
 
-@goods_blp.route('/goods')
-def get_goods():
-    db = inject.instance('DB')
-    goods = db.goods.get_full_info_of_goods()
-    return jsonify(goods), 200
-
-
-@goods_blp.route('/goods', methods=['PUT'])
-def update_goods():
-    db = inject.instance('DB')
-    succes_count, error_ids = db.goods.put_info_on_goods(request.json)
-    return jsonify(
-        {
-            'successfully_updated': succes_count,
-            'errors': {'no such id in goods': error_ids}
-        }
-    ), 200
+    def delete(self, good_id):
+        good = Good.query.get(good_id)
+        db.session.delete(good)
+        db.session.commit()
+        return f"Successfully deleted good with id: {good_id}"

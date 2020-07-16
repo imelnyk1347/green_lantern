@@ -14,7 +14,7 @@ class Users(Resource):
             user = User.query.get(user_id)
             if user:
                 return marshal(user, users_structure)
-            return f"No suc user with id: {user_id}"
+            return f"No such user with id: {user_id}"
         return marshal(User.query.all(), users_structure)
 
     def post(self):
@@ -35,4 +35,4 @@ class Users(Resource):
         user = User.query.get(user_id)
         db.session.delete(user)
         db.session.commit()
-        return f"Seccessfully deleted User with is: {user_id}"
+        return f"Successfully deleted User with id: {user_id}"

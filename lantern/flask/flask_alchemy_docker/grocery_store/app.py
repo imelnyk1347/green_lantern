@@ -10,6 +10,8 @@ def make_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     app.register_blueprint(users)
+    app.register_blueprint(goods)
+    app.register_blueprint(stores)
     return app
 
 
