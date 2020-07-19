@@ -5,6 +5,8 @@ FIXTURES_DIR = os.path.join(ROOT_DIR, "fixtures")
 
 
 class Config:
+    HOST = "localhost"
+    PORT = 5000
     PG_USER = "cursor"
     PG_PASSWORD = "very_secret_password"
     PG_HOST = "localhost"
