@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from grocery_store.database import db
 from flask_login import current_user
+from grocery_store.models import Good
 
 
 main = Blueprint('main', __name__)
@@ -8,7 +9,8 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    goods = Good.query.all()
+    return render_template('index.html', goods=goods)
 
 
 @main.route('/profile')

@@ -1,10 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
 <h1 class="title">
-  Flask Login Example
+  Goods Svitlana`s store
 </h1>
-<h2 class="subtitle">
-  Easy authentication and authorization in Flask.
-</h2>
+
+
+    <table align="center">
+    <h2 class="subtitle">
+
+        <tr align="center">
+            <th style="border: 1px solid black;">Name</th>
+            <th style="border: 1px solid black;">Brand</th>
+            <th style="border: 1px solid black;">Price</th>
+        </tr>
+
+        <tr>
+            {% for good in goods %}
+            <td style="border: 1px solid #000000; color: black">{{ good.name }}</td>
+            <td style="border: 1px solid black; color: black">{{ good.brand }}</td>
+            <td style="border: 1px solid black; color: black">{{ good.price }}</td>
+        </tr>
+
+    </h2>
+        {% endfor %}
+    </table>
 {% endblock %}
