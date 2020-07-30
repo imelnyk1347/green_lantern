@@ -19,9 +19,16 @@
 
                 <p>Email: {{ email }}. </p>
 
-                {% for user in orders.order_lines %}
-                <p>Orders: {{ user.good.name }}. Price: {{ user.good.price }}. </p>
+                {% for good in goods %}
+                <p>Orders: {{ good }}. </p>
+
                 {% endfor %}
+
+<!--                <p>Orders: {{ goods }}. </p>-->
+
+<!--                {% for user in orders.order_lines %}-->
+<!--                <p>Orders: {{ user.good.name }}. Price: {{ user.good.price }}. </p>-->
+<!--                {% endfor %}-->
 
                 <p>Total price: {{ total }}</p>
 
