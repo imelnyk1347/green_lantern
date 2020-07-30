@@ -27,12 +27,15 @@ def order():
     email = current_user.email
     orders = current_user.orders
 
-    # sum of all user goods price
+    # sum of all user goods price / output user goods
     for ordering in orders:
         # import pdb;pdb.set_trace()
-        order_order_line = sum([order_lin.good.price for order_lin in ordering.order_lines])
-        name_order_line = [order_lin.good.name for order_lin in ordering.order_lines]
-    total = order_order_line
-    goods = name_order_line
+        full_price = sum([order_lin.good.price for order_lin in ordering.order_lines])
+        goods_price = [order_lin.good.price for order_lin in ordering.order_lines]
+        goods_name = [order_lin.good.name for order_lin in ordering.order_lines]
+    total = full_price
+    price = goods_price
+    goods = goods_name
 
-    return render_template("order.html", user=user, email=email, orders=orders, total=total, goods=goods)
+    return render_template("order.html", user=user, email=email,
+                           orders=orders, total=total, goods=goods, price=price)
