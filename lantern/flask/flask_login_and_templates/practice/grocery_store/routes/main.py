@@ -17,5 +17,19 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    # import pdb;pdb.set_trace()
     return render_template('profile.html', user=current_user.name, email=current_user.email)
+
+
+@main.route('/order')
+@login_required
+def order():
+    user = current_user.name
+    email = current_user.email
+    orders = current_user.orders
+
+    #  sum of all user goods price
+    for ordering in orders:
+        order_orderline = sum([order_lin.good.price for order_lin in ordering.order_lines])
+    total = order_orderline
+
+    return render_template("order.html", user=user, email=email, orders=orders, total=total)
