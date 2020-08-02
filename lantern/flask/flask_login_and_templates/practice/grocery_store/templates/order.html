@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Order{% endblock %}
+
+{% block content %}
+
+
+<h1 class="title">
+    <p>Orders</p>
+</h1>
+
+    <table>
+
+        <h2  class="subtitle">
+
+            <tr>
+
+                <p>Your name: {{ user }}.</p>
+
+                <p>Email: {{ email }}. </p>
+
+                {% for prices in price %}
+                    Price: {{ prices }}
+                {% endfor %}
+
+
+                {% for good in goods %}
+                    <p>Orders: {{ good }}. </p>
+                {% endfor %}
+
+                <p>Total price: {{ total }}</p>
+
+
+            </tr>
+
+        </h2>
+
+    </table>
+
+{% endblock %}

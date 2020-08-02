@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+
+<h1 class="title">
+  Goods list
+</h1>
+
+    <table align="center">
+    <h2 class="subtitle">
+
+        <tr>
+            <th style="border: 2px solid black;">Name</th>
+            {% if current_user.is_authenticated %}
+            <th style="border: 2px solid black;">Brand</th>
+            {% endif %}
+            <th style="border: 2px solid black;">Price</th>
+        </tr>
+
+        <tr>
+            {% for good in goods %}
+            <td style="border: 2px solid #000000; color: black">{{ good.name }}</td>
+            {% if current_user.is_authenticated %}
+            <td style="border: 2px solid black; color: black">{{ good.brand }}</td>
+            {% endif %}
+            <td style="border: 2px solid black; color: black">{{ good.price }}</td>
+        </tr>
+
+    </h2>
+        {% endfor %}
+    </table>
+{% endblock %}
