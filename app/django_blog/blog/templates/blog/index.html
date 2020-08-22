@@ -9,9 +9,19 @@
 
         <h3>Hello from templates.blog.index.html</h3>
 
-        <h3 class="mb-5">Names</h3>
-        {% for name in names %}
-            <p>Hello {{ name }}</p>
+        <h3 class="mb-5">Posts</h3>
+        {% for post in posts %}
+            <div class="card mb-4">
+              <div class="card-header">
+                {{ post.date_public }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.body | truncatewords:15 }}</p>
+                <a href="#" class="btn btn-primary">Read</a>
+              </div>
+            </div>
+
         {% endfor %}
 
     {% endblock %}

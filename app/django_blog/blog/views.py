@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
+from .models import Post
+
 
 def posts_list(request):
-    n = ['Svitlana Melnyk', 'Ihor Melnyk', 'Melnyk Serhiy', 'Melnyk Bohdan', 'Melnyk Liydmyla']
-    return render(request, 'blog/index.html', context={'names': n})
+    posts = Post.objects.all()
+    return render(request, 'blog/index.html', context={'posts': posts})
