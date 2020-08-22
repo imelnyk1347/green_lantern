@@ -7,15 +7,11 @@
 
     {% block content %}
 
-        Hello from templates/blog/index.page
+        <h3>Hello from templates.blog.index.html</h3>
 
-        <h1>Hello from templates.blog.index.html</h1>
-
-        <h2>Hello django</h2>
-
+        <h3 class="mb-5">Names</h3>
         {% for name in names %}
-            <p>Hello from {{ name }}</p>
+            <p>Hello {{ name }}</p>
         {% endfor %}
 
-        {{ names }}
     {% endblock %}
