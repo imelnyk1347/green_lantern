@@ -1,0 +1,17 @@
+{% extends 'blog/base_blog.html' %}
+
+    {% block title %}
+        {{ post.title }}
+    {% endblock %}
+    <!-- - {{ block.super }}   need add if you want to show default title of base.html -->
+
+    {% block content %}
+        <h1 class="mt-5">
+            {{ post.title }}
+        </h1>
+
+        <p>
+            {{ post.body }}
+        </p>
+
+    {% endblock %}
