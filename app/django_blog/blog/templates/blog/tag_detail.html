@@ -1,19 +1,15 @@
 {% extends 'blog/base_blog.html' %}
 
     {% block title %}
-        Index page
+        {{ tag.title }}
     {% endblock %}
 
 
     {% block content %}
-
-        <h3>Hello from templates.blog.index.html</h3>
-
-        <h3 class="mb-5">Posts</h3>
-        {% for post in posts %}
+        <h1 mb-5>Posts with {{ tag.title|title }} tag:</h1>
+        {% for post in tag.posts.all %}
 
             {% include 'blog/includes/post_card_template.html' %}
 
         {% endfor %}
-
     {% endblock %}
